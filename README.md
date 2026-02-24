@@ -4,8 +4,6 @@
 
 Aplikasi web Laravel untuk melacak aktivitas olahraga pengguna secara pribadi. FitTrack Pro memungkinkan pengguna login, menambahkan sesi latihan, melihat riwayat, dan mengelola data kebugaran mereka dengan antarmuka modern dan responsif.
 
-![FitTrack Pro Dashboard](screenshots/dashboard.png)
-
 ---
 
 ## 🔧 Fitur Utama
@@ -90,17 +88,79 @@ DB_PASSWORD=
 
 ![Teks Alternatif]()
 
-### 🗃️ Database Entity Schema
+### 🔐 Autentikasi
+- Registrasi akun pengguna
+- Login & Logout aman
+- Session-based authentication
 
-| Entitas | Kolom | Keterangan |
-| :--- | :--- | :--- |
-| **users** | `id` | Primary Key (PK) |
-| | `username` | Unik, untuk login |
-| | `password` | Hash bcrypt |
-| **workouts** | `id` | Primary Key (PK) |
-| | `user_id` | Foreign Key (FK) ke `users.id` |
-| | `workout_name` | Nama latihan (otomatis = type) |
-| | `workout_type` | Jenis latihan (Push Up, Run, dll.) |
-| | `duration` | Durasi dalam menit |
-| | `created_at` | Timestamp otomatis |
-| | `updated_at` | Timestamp otomatis |
+### 📊 Dashboard
+- Ringkasan statistik workout
+- Tampilan "Total Workouts" dan "Active Minutes"
+- Daftar 3 workout terbaru
+
+### ➕ Manajemen Workout
+- Tambah sesi latihan (Type + Duration)
+- Validasi input wajib
+- Notifikasi sukses/error
+
+### 📝 Riwayat Latihan
+- Tabel lengkap riwayat workout
+- Filter data per pengguna
+- Hapus data workout
+
+### 🗑️ Pengelolaan Data
+- Hapus workout yang salah
+- Konfirmasi sebelum hapus
+- Proteksi kepemilikan data
+
+---
+
+## 🛠️ Teknologi
+
+| Komponen | Teknologi |
+|----------|-----------|
+| Backend | Laravel 11, PHP 8.2+ |
+| Frontend | Blade Templates, Tailwind CSS |
+| Database | MySQL 5.7+ / MariaDB |
+| Authentication | Session-based custom |
+
+---
+
+| **FITUR** | **PENGGUNA** |
+|----------|----------|
+| Dashboard | ✅ |
+| Login/Register | ✅ |
+| Tambah Workout | ✅ |
+| Lihat Riwayat | ✅ |
+| Hapus Workout | ✅ |
+
+---
+
+**struktur project**
+
+```
+fittrack-pro/
+├── app/
+│   ├── Models/              # Eloquent Models (User, Workout)
+│   └── Http/Middleware/     # Custom Middleware
+├── database/
+│   └── migrations/          # Database migrations (opsional)
+├── resources/views/
+│   ├── auth/                # Login & Register
+│   ├── dashboard/           # Dashboard utama
+│   └── workouts/            # Form & View Log
+├── routes/
+│   └── web.php              # Route definitions
+└── docs/                    # Dokumentasi tambahan
+```
+---
+## 🤝 Kontribusi
+
+Kontribusi sangat diterima! Silakan:
+1. Fork repository ini
+2. Buat branch fitur (`git checkout -b fitur/AmazingFeature`)
+3. Commit perubahan (`git commit -m 'Menambah fitur amazing'`)
+4. Push ke branch (`git push origin fitur/AmazingFeature`)
+5. Buat Pull Request
+
+---
